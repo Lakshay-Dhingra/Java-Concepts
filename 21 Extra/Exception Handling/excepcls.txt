@@ -1,0 +1,89 @@
+
+
+
+
+
+
+
+
+                                        Throwable
+               Error                                                Exception
+                 LinkageError                                      ClassNotFoundException  
+                 ThreadDeath                                       CloneNotSupportedException
+                 VirtualMachineError                          IllegalAccessException
+                            InternalError                           NoSuchFieldException
+                            OutOfMemoryError                NoSuchMethodException
+                            StackOverflowError                InterruptedException
+                            UnknownError                         RuntimeException                       
+                                                                                                  ArithmeticException
+                                                                                                  ArrayStoreException
+                                                                                                  IllegalArgumentException
+                                                                                                  NullPointerException
+                                                                                                  IndexOutOfBoundsException
+                                                                                                                          ArrayIndexOutOfBoundsException
+                                                                                                                          StringIndexOutOfBoundsException
+
+                                                                                                  
+
+
+
+
+
+
+
+
+
+
+
+
+
+ ClassNotFoundException
+when we request to load a class
+but no definition for the same class with the specified name could be found.
+
+   InstantiationException
+  when an application tries to create an instance of a class using the "new"   but the specified class object
+ cannot be instantiated because it is an     interface or is an abstract class.
+
+IllegalAccessException
+ IllegalAccessException is thrown when an application tries to reflectively create 
+an instance (other than an array), set or get a field, or invoke a method, but the currently executing method 
+does not have access to the definition of the specified class, field, method or constructor. 
+
+NoSuchMethodException
+ ExceptionThrown when a particular method cannot be found. 
+
+NoSuchFieldException
+ Signals that the class doesn't have a field of a specified name. 
+
+ some popular subclasses of RuntimeException are as under
+
+  ArithmeticException
+  represent  exceptional arithmetic condition has occurred.
+  For example, an integer "divide by zero" throws an instance of this class. 
+    ArrayStoreException
+    indicate that an attempt has been made to store the wrong type of object     into an array of objects. 
+    e.g  we take array of int and tries to store string with in it.
+
+   NullPointerException
+   Thrown when an application attempts to use null in a case where an object    is required. 
+  
+   ArrayIndexOutOfBoundsException
+   Thrown to indicate that an array has been accessed with an illegal index.   
+   The index is either negative or greater than or equal to the size of the     array. 
+
+   Some common class of Error are as under
+   VirtualMachineError
+   Thrown to indicate that the Java Virtual Machine is broken or has run out    
+   of resources necessary for it to continue operating. 
+
+   OutOfMemoryError
+     OutOfMemoryError  is thrown when the Java Virtual Machine cannot allocate  memory  to 
+     an object because it is out of memory, and no more memory could be made 
+     available by the garbage collector. 
+
+   StackOverflowError
+   Thrown when a stack overflow occurs because an application recurses too  deeply. 
+
+
+

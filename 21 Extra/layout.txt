@@ -1,0 +1,165 @@
+
+  way's of Layouting components with in a containers
+            or
+ style of placing components with in a containters
+ to manage layouts java  provides  us some built in  layout classes   these  classes are present in
+java.awt package .These classes are collectively known as Layout  classes
+
+  some popular layout classes area as under
+    1.  FlowLayout    2.  BorderLayout    3.  GridLayout    4.  CardLayout
+
+   ..   all layoout classes  implements  an  interface  named  LayoutManager
+
+                                                      interface  LayoutManager
+
+         class  FlowLayout         class BorderLayout          class GridLayout   class   CardLayout
+       
+   ..   so we can say  all layout can be reffered by a common name i.e   Layout manager
+
+     to set layout of a given container   we can   use setLayout() method  FRame
+                         public  void setLayout (  LayoutManager  obj )
+
+     setLayout() method is available with in all java container classes 
+
+       i.e  with in Panel class , Frame class  ,   Applet class  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+FlowLayout : 
+         A flow layout arranges components in a directional flow, much like lines of text in a paragraph. 
+         FlowLayout is the default layout of Panel container and Applet container.
+
+                    FlowLayout  fl = new FlowLayout();
+                             Frame f = new Frame();
+                           f.setLayout( fl );
+
+    common constructor of  FlowLayout
+
+                     FlowLayout() 
+          Constructs a new FlowLayout with a centered alignment and a default 5-unit horizontal and vertical gap. 
+
+                    FlowLayout(int align)   
+           Constructs a new FlowLayout with the specified alignment and a default 5-unit horizontal and vertical gap. 
+
+                    FlowLayout(int align, int hgap, int vgap) 
+        Creates a new flow layout manager with the indicated alignment and the indicated horizontal and vertical gaps.
+
+   class FlowLayout
+     {
+        public static final  int   LEFT  =  ??
+        public  static  final  int  CENTER   == ??
+       public  static   final  int  RIGHT   =  ??
+     }       
+        
+wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+
+GridLayout:
+         The GridLayout class is a layout manager that lays out a container's components in a rectangular grid. 
+        The   container is divided into equal-sized rectangles, and one component is placed in each rectangle.     
+
+       common  constructor....
+                       public  GridLayout( int  r , int c );
+                       public  GridLayout( int  r , int c  , int hgap , int vgap );
+
+
+import java.awt.*;
+import java.awt.event.*;
+
+ class  MyFarme22  extends  Frame  implements  ActionListener
+    {
+                  TextField  tf ;
+                  Button   barr[];
+          MyFrame22 ()
+            {
+                   tf  = new  TextField(20);
+                   barr= new  Button[10];
+                 GridLayout  gobj  = new  GridLayout(4,3,5,5);
+                 setLayout( gobj );
+                 add( tf );
+                 for( int i =0;i< 10 ; i++)
+                   {
+                          barr[i]= new  Button(   String.valueOf(i)  );   
+                           add( barr[i] );
+                          barr[i].addActionListener(this );
+                   }
+                     setSize(200,200); setVisible(true);  setBackground ( Color.RED );
+                    }
+               public static void main(String args[])            {       new MyFrame22();               }
+
+                 public  void   actionPerformed( ActionEvent  e )
+                        {
+                              Button temp=(Button) e.getSource();
+				tf.setText(tf.getText()+temp.getLabel());
+                        }
+         }
+
+Grid Layout is Resizable.
+
+mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+
+
+BorderLayout:
+        A border layout lays out a container, arranging and resizing its
+        components to fit in five regions: north, south, east, west, and center. 
+        Each region may contain no more than one component, 
+        and is identified by a corresponding constant: NORTH, SOUTH, EAST, WEST, and CENTER. 
+        When adding a component to a container with a border layout, use one of these five constants
+         
+     by default  layout of  Frame container is  BorderLayout  so we can  add  components with in  frame
+     according to  BorderLayout   with out setting layout of frame.
+           common constructor....
+              BorderLayout() 
+                      Constructs a new border layout with no gaps between components. 
+              BorderLayout(int hgap, int vgap) 
+                      Constructs a border layout with the specified gaps between components. 
+  import java.awt.*; 
+  class BorderDemo   extends  Frame
+     {     Button b1,b2,b3,b4;      TextArea ta;
+       public BorderDemo()
+           {   b1=new Button("East");               b2=new Button("West");              
+                b3=new Button("North");                b4=new Button("South");            
+                ta=new TextArea(2,2);
+                          setLayout( new BorderLayout( 10,10 ) );              
+                add(b1, BorderLayout.EAST);    
+                add(b2, BorderLayout.WEST);  
+                add(b3, BorderLayout.NORTH);     
+                add(b4, BorderLayout.SOUTH);               add(ta) ;
+                setSize(200,200); setVisible(true);  setBackground( Color.RED  );
+           }
+           public static void main(String args[])         {          new BorderDemo();       }
+        }
+
+Border Layout is Resizable.
+
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+CardLayout:
+               A CardLayout object is a layout manager for a container. 
+               It treats each component in the container as a card. 
+              Only one card is visible at a time, and the container acts as a stack of cards. 
+              The first component added to a CardLayout object is the visible component 
+              when the container is first displayed
+
+             in case of   CardLayout  arrangement  .....
+                             whild adding   component to container   always assign a  unique key to  each component
+                              same key is  use ful  while flipping  the  components.... 
+                              key value must of type  String
+              to  flip the  components  CardLayout  class provides us  some built in methods
+                          public  void  first( Container  refvar);
+                          public  void  last(  Container   refvar);
+                          public  void  previous(Container  refvar);
+                          public  void  next(  Container  refvar);
+                         public  void  show(  Container  refvar   ,  String key);
+                                    
+  constructor....
+              CardLayout() 
+                          Creates a new card layout with gaps of size zero. 
+              CardLayout(int hgap, int vgap) 
+                           Creates a new card layout with the specified horizontal and vertical gaps. 
+
+   
+     setting  null layout  and  placing  components   on custom  co ordinates....
+                 
+                        container.setLayout ( null );
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@

@@ -1,0 +1,175 @@
+                                                     java exception handling concepts
+
+   Exception are those run time abnormal conditions    those can be handeled in the java
+   application  & do not results in abnormal termination of  program.
+
+    here  word  exception is  not  concerned  with   compile time  error instead 
+    it is   concerned with   program  runtime
+
+ ...  e.g    division   by  zero  exception 
+          in  case of  run  time  exception   jvm   terminates  java  application   abnormally 
+
+         which  results in  loss of   data  / info. 
+     means ... 
+         user  of  the  application never  blvs  in  our   application.
+        to  avoid  such  type of  abnormal  termination  java  provides us
+        a  structured  mechanism of  handling   exceptions.
+                     try  
+                         {
+
+                         }  catch ()  {}
+        built in classes
+   // lets under stand  need of  exception handing  using following   program
+       class Demo                                  
+           {
+                   public static void main(String args[] )
+                        {
+                             int x  =  Integer.parseInt( args[0] );
+                             int y  =  Integer.parseInt( args[1] );
+                             int res  =  x  /y ;
+                                   System.out.println (  "  res   =   "    + res );
+                              System.out.println("  Thanks for using application " );
+                        }
+              }
+
+
+
+
+
+
+
+
+
+
+In java all runtime exception are represented as "object" 
+and there is a well defined class hierarchy for representing runtime errors/exception.
+
+
+for structured exception handling  java provides some built in keywords....
+         these are  as under
+
+             "try"    "catch"  "finally"  "throw"  "throws"
+
+
+       try     .. is used to mark those java statements in which u may think error
+                    will come during program execution.
+
+     catch .. block will be used to pick  Exception class object.
+                ( which will be thrown by java in case of  Exeception )
+
+    finally .. is the optional block of try..
+       instruction of finally get executed in dead sure manner
+       wheater a exception occurs or not.
+
+       throw : is used to raise an exception class object in explicit manner
+
+    throws :    it is  used with  prototype of  java class method...
+                    
+                   using  throws   we can  forcast  type of  exceptions  a method may  throw during 
+                   its  execution.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    command line inputs are special kind of inputs...  which can be provided to java application
+    at the time  of  invocation of  java  application 
+
+    e.g 
+                java   Demo     22   44   acd   xyz  
+
+     by default they are of  type  string
+     each  seperated by  space
+
+     we can  recv them with in   main(  String  args[] )   method
+
+     if  we  pass command line  inputs then  jre
+     we  create  array  of  type  String  for  all  command
+     line inputs  and  base  address of  same array
+     will be  provided to the  main   ....  String  args[]
+
+     now   after recv    same   reference   we can 
+     fetch   all  command  line  inputs  as  we  fetch  a  string array
+
+                    class  Demo
+                        {
+                             public static void main(String args[] )
+                                    {
+                                            for ( int   i  =0;  i < args.length  ;  i++ )
+                                                    {
+                                          System.out.println(  "args["  + i  +  "]="  +  args[i] );
+                                                    }
+                                      }
+                            }
+
+
+
+
+
+
+
+
+
+
+
+     
+
+
+
+
+
+
+
+
+
+
+
+     
+
+
+
+
+
+
+
+
+
+
+      
+
+

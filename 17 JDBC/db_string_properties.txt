@@ -1,0 +1,88 @@
+
+driverclass=sun.jdbc.odbc.JdbcOdbcDriver
+connstring=jdbc:odbc:dsnname
+
+               Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
+               Connection onn=DriverManager.getConnection("jdbc:odbc:dsnname");
+--------------------------------------------------------------------------------------------------------------------
+
+
+driverclass=oracle.jdbc.driver.OracleDriver
+connstring=jdbc:oracle:thin:@localhost:1521:xe
+
+e.g
+               Class.forName("oracle.jdbc.driver.OracleDriver");
+               Connection onn=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
+
+
+
+=====================================================================
+
+driverclass=com.mysql.jdbc.Driver
+connstring=jdbc:mysql://localhost:3306/dbname
+
+e.g
+Class.forName("com.mysql.jdbc.Driver");
+Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/db11","root","root");
+
+
+
+    Explicit   classs loading  using       forName ()  method
+
+
+          class   Class
+              {
+
+                       public  static  Class    forName(   String   fullyQualifiedNameofClass )    throws   ClassNotFoundException
+                                                  {
+
+                                                  }
+              }
+
+
+      class  Demo
+           {
+                public static  void main( String args    []  )
+                     {
+                          try  
+                               {
+                                Class.forName( "Alpha");
+                               System.out.println( "   succesfully  loaded ");
+                                     }   catch   ( ClassNotFoundException  e      )
+                                          {  e.printStackTrace();    }
+                     }
+        }
+
+          class  Alpha
+                 {     
+                        static
+                             {   System.out.println("  Alpha  loading... ")  ;   }
+                 }
+
+          class  Beta
+                 {     
+                        static
+                             {   System.out.println("  Beta  loading... ")  ;   }
+                 }
+
+
+
+                       
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

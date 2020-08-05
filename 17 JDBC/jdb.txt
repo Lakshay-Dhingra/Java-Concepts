@@ -1,0 +1,501 @@
+                                               java database connectivity   
+JDBC is the java API that facilitate connectivity of java  application to the database
+                     
+why we  need database   ..  to store  transaction data  in relation form on permanent basis we need database 
+
+  benefits of   database   ..   easy to store /  easy to access /  easy to manipulate /  removal of duplication of  info
+
+ As we know a company develop s/w according to expected users
+
+ in case of Database Application there 2 types of user
+  1.    Human User     --       gui  
+  2.    Application User
+
+  A Human user interact with db either using
+             CUI or                      Window or using Web interface
+            
+   Where as Application interact with db using some functions. or using some classes 
+
+   These functions are known as Native Drivers.
+   Native Drivers....  native drivers are devl. by database vendor
+                              using the tech. in which db itself was created.
+                              a application user can interact with database via
+                               native drivers.
+
+        but with native  driver application user 
+      face a problem i.e       App. programmers are required to learn Multiple API for
+       each database vendor.
+                                                                                        oracle
+                                                                                            ND (c++)
+
+                                                                                        obbc Drive     .dll files of  c  implementation
+
+              app1                                                                       acess
+              user                                                                          ND (vc++)
+                          
+
+                                                                                        mysql             
+                                                                                             ND (c)
+                        
+       TO over come mulitple API problem ODBC was introduced.
+
+        ODBC enforced common API --
+        ie. they decl.  prototype  of some common  functions and    
+       every database vendor   is required to implement all such 
+       functions.  ( initially ODBC functions are purposed in "c")
+                                   void  insert();
+                                   void  delete();               --    .obj                            .lib
+                                                                                                
+
+       Now Database vendor are responsible for providing two types    of Driver i.e  1. Native Driver 2. ODBC driver.
+       ODBC provides a universal way to getting connected with     any type of database available in market.
+
+       Over the period of time  Application User demand another type  db  driver  software
+
+              .as JDBC   for  java
+
+             DAO /  RDO or ADO  / ADO.net /   for microsoft   programmers 
+
+       These api are native to the language of  Front End Application Developer
+
+       Using these API application developer is no more required to  learn syntax of  ODBC API
+
+       in case of java  such a API is known as JDBC  
+      Set of interface provided by SUN microsystem to perform  database operation (JDBC)
+
+       Now DB developer   offers  us three types of     drivers
+             1. Native Driver                                  2. ODBC                                                         3. JDBC
+           ( in the lang of  db itself)                       ( common  function in form of c )                    in form of   java syntaxes             
+
+  means as  a  java application devlpr  we  will  learn    JDBC   drivers
+
+  now   question arise  what   java ( sun microsystem )  purpose     for   JDBC
+
+     ans   is       some  interfaces        and  these interfaces    consist of    decl of   abstract methods 
+
+      as  a  java  application  developer    we  will learn  prototype of these method
+
+      and  a   db   developr    will  implements    these  abstract  methods   using   concept of  java classes
+        
+        here    jdbc   means  set  of  built in  interfaces   purposed by  sun microsystem
+        using  these  interfaces   java  application  dvlpr  can link  java  application with  backend db 
+
+        these   all interfaces  are  present in     java.sql   packages
+
+       some of the  common  interfaces and  classes are  as under
+           Connection        ---     object of   type  Connection  represents  a  physical  connection with  db
+
+            Statement         -  using  object of  type   Statement  we can  issue  sql  queries to  db
+
+            PreparedStatement     -- using   object of type   PreparedStatement    we send  parameterized qrys to db
+
+            ResultSet         --     used  to  collect  result  of  query   coming  from  db
+
+            ResultSetMetaData     -- used to   find  out  meta  info  of   ResultSet
+
+             DriverManager (class)  --  used to   select   db   driver 
+                                                 and  also   used to   create   physical   connection with   db
+ 
+             SQLException  (class)  --     if  there  some  exception  occurs during  db  transcation
+                                                     thn  jvm  creates  object of    type  java.sql.SQLException
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+      Depending upon the implementation of JDBC interfaces
+      provided by DB vendors  we have 4 types of JDBC drivers.
+
+   Type 1. JDBC - ODBC Bridge Driver    
+   Type 2. JDBC  Native Drivers
+   Type 3  JDBC  Network Drivers
+   Type 4  Pure java Drivers
+
+
+   Type 1.  This drivers is a Java Wrapper of ODBC drivers.
+      i.e in this case implementation classes of JDBC interface
+      provided by vendor invokes ODBC functions using JNI
+
+   Adv. 
+        This is the simplest driver from implementation point of view
+        These  JDBC drivers can be used to connect java application
+         to any database without changing driver classes.
+
+     from java point of view Type1 driver are written only once.
+     we can use Type1 jdbc driver with any kind of database
+     they provide universal connectivity.
+
+
+    Dis. Adv...of Type 1 
+           1. ODBC Drivers needs to be installed on each machine
+               where java application needs to be executed.
+          2.  Degraded Performance is obtained because each DB
+               operation requires multiple method calls and multiple
+               conversions....
+          3.  plat form  dpdnd....
+
+
+
+   Type 2               
+      in this driver implementation classes of JDBC interfaces   are provided by db vendor 
+               type2 .. invokes functions of Native Drivers   using JNI... (ODBC layer get disappeared)
+      Adv.
+        1. ODBC drivers are not req.
+        2. Better performance. as compared to Type 1
+
+
+    Dis. Adv..
+        1. Native Drivers are need to be installed on
+            each machine.
+        2. Different set of Driver implementation classes are req.  
+           for every new database.
+
+
+ Type 3 :
+              is the modified version of Type2 driver. in this driver         
+             implementation  classes provided by vendor used  
+            standard  networking protocol such as TCP/IP for    invocation of functions of native Drivers.
+
+     Adv.  Native Drivers needs to be installed only on a single  
+               machine in a network.
+    Dis. Adv. Additional networking support is required .
+
+    Type 4 :
+             in this driver implementation classes of JDBC interface 
+              provided by  vendors we can directly interact with database using  native protocols.
+             Adv.  
+                 1.  ODBC or native drivers are not req. 
+                 2.  Better performance as compared to other drivers.
+  Dis Adv.  
+            1. for each database different set of driver classes are required.
+            Type 2-3-4 are popular now a days where as Type1 are outdated.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+   JDBC API    
+                java.lang.sql package contains classes and interface of JDBC API 
+
+    Commonly used component of JDBC API are :-
+            DriverManager   (Class)
+            Connection
+            Statement
+            PreparedStatement
+            CallableStatement
+            Resultset
+            ResultsetMetaData
+            DatabaseMetaData
+            SQLException   ( Class)
+
+
+
+  common api  of  jdbc  
+  DriverManager :
+           is a utility class that act as factory of connection.
+  Connection : 
+           this interface provides the abstraction of database  
+           connection and act as factory for statement interface.
+   Statement :
+           provides the functionality for execution sql queries over  a 
+           database connection  and act as factory of Resultset
+   PreparedStatement : 
+           provides the facility of executing parameterized  queries
+    ResultSet :
+        is an application level cursor that holds the results of a 
+        select query and act as   factory  of ResultsetMetaData.
+    ResultSetMetaData :
+        provides the metadata of the result contained in the  Resultset.
+   SQLException : 
+        is the base class of Database Related Exceptions.
+   Steps  of  creating  jdbc based  application
+          Step 1. Load the Driver Meta Class
+                       each database vendor provides a metadata driver class  with JDBC  implementation classes. 
+                       metadata class contains the info.  of vendor specific  Connection / Statement/ ResultSet
+                       implementation classes 
+
+                      Note : name of metaclass may  differs from vendor to vendor and  driver to driver.
+                       to  load  meta driver class  java  provides us  following built in method    
+
+                  public   Class   forName( String  url_of_meta_driver_class )  throws ClassNotFoundException  
+                  e.g  to   load  meta class for  type 1      issue following command
+                  Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");  
+
+             step2 
+                            after loading metaclass  then try to obtain the connection with  database.
+                            for  the same  use we  hv to use   getConnection() method of   DriverManager  class.
+
+                public static Connection getConnection(String  connectionstring)  throws SQLException
+                             or 
+                public static Connection getConnection (String connectionstring, String username, String password)                                                     
+                                                                                                                                                          thorws SQLException
+                 notice two overload forms of getConnection 
+                          first  one will be used with the database  which do not       requires req. authentication
+                          and second form of getConnection will be used with database       which req.       authentication
+
+     More on Connection String 
+      here connection String is used to provide database specific information to the DriverManager  
+      this information  is used  to  establish a connection with the database.
+  
+      Different drivers req. different information within  connectionstring  i.e connection string varies 
+      from driver to driver.
+
+    connection string consist of following info
+                            1.  main protocol   2   subprotocol   3  physical location of ur database
+                    e. g in  case of  Type 1 
+                                 // here main protocol is  jdbc          //  here sub protocol  is  odbc
+                                 // here database means  do with which we wants to connect our java application
+
+        in case of Type1 JDBC driver connection string is present in       following format
+                                            mainprotocol : subprotocol : datasource name
+                                                                                                 DSN   it  holds database info.. + name dll file used for type 1
+                                                                                                                   jdbc odbc  bridge drivers.
+               e.g 
+                      Connection con= DriverManager.getConnection("jdbc:odbc:mydbdsn");
+
+   in case of  Type 4 driver of  vendor oracle connection string will be.. as under...
+   Connection con=  DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
+
+ after obtaining the connection then   issuing sql quries ..   using sql quries we can perform db operations
+       like    creation of table   /    inserting data with in table /  selecting data from db table etc.
+
+   for the same you can  use  Statement interface  object 
+
+                     public  Statement  createStatement()   throws  SQLException 
+
+       factory method of  Connection  interface is used to create object of    Statement object
+      ( here  Statement object means  object of  Statement  interface  implementation class provided by db vendor )
+
+                                                   
+
+
+
+
+1   load  driver
+2.  getconnection
+3.   issue  sql  quries  ...        create  table 
+                                            insert into   xy
+                                               delete from  
+  class  Alpha
+    {
+      public  static void    main(String args)
+            {
+              try 
+                {
+                    class.forName("oracle.jdbc.driver.OracleDriver");
+         Connection  conn   =  DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
+
+                                      " create  table   xyz    (  name  char(20) ,  salary  number (5) )  "
+
+               } catch (  ClassNotFoundException  e )   {}
+                  catch ( SQLException   ee  )   {}
+        }
+    
+
+
+ To create an object of type   java.sql.Statement   interface
+                      createStatement()     method of  Connection interface will be  used.
+                      public Statement createStatement() throws SQLException
+   e.g  Statement st=con.createStatement();
+
+  commonly used methods of  Statement interface..
+        executeQuery () : is used to issue sql queries
+   public ResultSet executeQuery(String selectQuery) throws                                                                                   SQLException
+    
+   public int executeUpdate(String nonselectQuery) thorws                                                                                 SQLException
+  is used to issue  alter/insert/update/create/delete like commands
+                                  
+
+   public boolean execute(String nonDMLQuery) throws                                                                               SQLException
+
+
+
+// getting data back from database  using  select  query
+
+               select  * from  emp
+               select  * from emp where salary >1000;
+               select  name,age from emp;
+
+         to execute  select query  ...     use  executeQuery()  method of   Statement interface
+
+         public  ResultSet   executeQuery( String querystring )  throws  SQLException
+
+   if  we execute  select query  using  executeQuery() method  of  Statement or  PreparedStatement  interface
+   then it provides result to java application  in form of   ResultSet object.
+                 
+  so at first lets discuss ResultSet  ...  Interface
+
+   ResultSet object   can be thinked as  subset of Database table.
+
+  ResultSet act as a cursor  for query result.
+
+  To obtain   data from ResultSet object    we have to fetch ResultSet object
+
+                                                     ( here fetching means accessing rows from ResultSet )
+
+   to fetch a row from the ResultSet  ...  java provides following methods with ResultSet interface
+
+                  public  boolean next() ;
+                  public  boolean previous() ;
+                  public  boolean first() ;
+                  public  boolean last() ;
+
+                   fetching the values of record from  ResultSet is a 2 step process
+
+                             1.  Record pointer is to be set on a valid record in a ResultSet
+
+                              2.  Value of individual field are read by converting them in to java types.
+                                    to read value of  fields  Resultprovides some getter methods
+
+
+                         public  String getString( int fieldindex);   or   public  String  getString( String fieldname);
+                         public  int getInt( int fieldindex);   or   public  int  getInt( String fieldname);
+                         public  double getDouble( int fieldindex);   or   public double  getDouble( String fieldname);
+
+       Note :   indexing of  fields begins from  1 ... instead of  0
+
+
+
+    ResultSet inteface provides following methods for changing the   
+    position of record     pointer in the     ResultSet.
+     1. next() ... advances the record pointer by 1 record
+         public boolean next()
+           next method will perform 2 activities
+                1. move to next
+                2. tell us wheather moved to a valid record or not.
+        public boolean previous ();
+        public  boolean first();
+        public boolean last();
+
+     Resultset interface provides various methods to read the value of 
+     individual field of  current Record general signature of these      method is as under
+     public Type getType(int fieldIndex) throws SQLException
+     or   
+    public Type getType(String fieldname) throws SQLException
+    e.g   
+     public String getString(int fieldIndex) throws SQLException
+     public int       getInt(String field name) throws SQLException
+     public float    getFloat(int fieldIndex ) throws SQLException
+                          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+           1.0  ..  fwd  select query to  database via java application
+           1.1       by taking ref of   Connection  query will be given to  jdbc layer
+           1.2        jdbc  layer  accept the  request 
+            1.3       jdbc  will  fwd the  request to concerned database
+            1.4     database engine will parse the query   and  execute  the query on original database table.
+             1.5.       now   DB  will create    a    cursor  for    retrived  rows....
+                            (  a  temp storage area  used to  hold  result to  current   query )
+               1.6         ref. of   this  cursor is  provided to  java application
+                         to  recv ref of  this  cursor   with in  java application we  need reference variable of  ResultSet interface
+                 1.7    fetching  the   cursor    using  next()  method of   ResultSet....
+                
+
+             
+               
+
+            
+                
+
+
+
+
+
+   after performing a healty communication we may need to    
+  close the connection ...following method of Connection interface
+   will be used for the same task.
+                 public void close() SQLException
+  Note :
+  closing of a connection results in implicit closer of statement and 
+  resultset associated with connection.
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@    
+
+  .. Issuing  parameterized query using  PreparedStatement interface
+ PreparedStatement :    an interface of JDBC API   which    provides the facility of executing parameterized queries.
+
+              prepareStatement() method of Connection interface is used to create  object of  PreparedStatement.            
+
+         prototype :
+
+             public PreparedStatement prepareStatement(String parameterized query)  throws SQLException
+
+            syntax of creating object of  PreparedStatement 
+            PreparedStatement stmt = con.prepareStatement("insert into stud_data values ( ?, ? , ? ) ");
+                                                                                                                 here  ?  mark represent argument of query
+
+              PreparedStatement interface provides various methods for setting    the values of these  parameter. 
+              general signature of these methods is as under
+
+                     public void setType(int paramindex,Type value)   throws  SQLException
+      
+        Actual method :-
+                                         public void setString(int paramindex, String value);
+                                         public void setInt(int paramindex, int value);
+                                         public void setDouble(int paramindex, double value);
+                       e.g 
+                                       stmt.setString( 1 ,  name )
+                                       stmt.setInt( 2 ,  age );
+
+  after  setter   method ..     use    executeUpdate()  method  of    PreparedStatement   to   execute  qury in db.
+
+
+
+
+
+   Diff. between Statement and PreparedStatement
+     1. PreparedStatement supports parameters where as Statement  does't.
+    2. PreparedStatement provides better performance as compared to Statement 
+        if same query is to be executed  multiple times with different parameter values.
+
+to  understand better performance consider following in context to execution of  SQL statements
+
+    in a database execution of query requires 4 steps
+         1. Query is parsed     
+        2. Parsed query is compiled
+        3. optimal method of executing query is identified.
+        4. query is executed.
+
+               in case of   PreparedStatement  java application will hold translated version of  query in buffer
+           and with  each call of    executeUpdate()  method  Object of  PreparedStatement will directly pick
+           optimal method .
+
+
+
+
+
+
+......................................................................................................................................................................................
+   Executing queries in a batch 
+
+  1. if multiple queries of same type are to be executed multiple times
+      then they must be executed as a batch to improve the performance.
+
+ 2. Statement   and  PreparedStatement  provides the facility of executing query in a   
+        batch through addBatch() and executeBatch() method.
+
+  ... in caseof    Statement
+              addBatch(  String  query_string ) -- is used to add a query to a batch.
+                  public void addBatch( String  query_string )SQLException 
+
+   ..  in case of   PreparedStatement
+                   addBatch(   ) -- is used to add a query to a batch.
+                       public void addBatch(  )SQLException 
+
+
+     executeBatch() : is used to submit the batch for the execution.
+              public int executeBatch() throws SQLException
+
+    Note : select query is not executed in batch as it brings different  
+               ResultSet every time.
+
+     Batch  Processing is effective in Banking transactions.
+

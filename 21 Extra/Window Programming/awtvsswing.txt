@@ -1,0 +1,38 @@
+
+  swing  :  is a GUI API that is  platform independent and completely written in java
+
+                Diff. between  awt and swing
+
+        awt components are not platform independent in terms of their look and feel
+        where as swing components are platform independent in terms of their look and  feel
+ 
+         swing components have richer functionality as compared to awt  components
+             
+          look and feel of  swing components will remain consistent across diff. 
+         operating system.. same will not happen with awt components
+
+          swing components are also known as light weight components
+          where as  awt components are known as heavy weight components
+
+          awt is the older version for    GUI  API in java
+          swing is newer version for  GUI  API  in java
+
+           all swing based component classes  are present in    javax.swing  package
+         
+           to distiguish components class from awt   you will see  "J"  in front
+           all components classes
+                       e.g
+                                  awt                                     swing
+                             Button                                  JButton
+                             Frame                                  JFrame
+                             TextField                             JTextField
+                             TextArea                              JTextArea
+                             Label                                    JLabel 
+
+       to  perform  event handling  in swing there is no change at all  u can use
+       awt.event package as it's  ... but for some new  swing components  
+       they provides  some additional  listener interfaces  are present in 
+       javax.swing.event  package.
+
+
+

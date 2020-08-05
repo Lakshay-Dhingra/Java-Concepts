@@ -1,0 +1,123 @@
+                                               Multithreaded  Programming  using  java
+             ability of executing more thn one  task on  concurrent  basis  is  known  as  multithreading
+        or
+             ability of executing more thn one  sections  or modules  of java application 
+            on  concurrent  basis  is  known  as  multithreading
+
+####################################################################################################################################################################################
+             
+	    to  under stand  multithreading   at first lets revise some basic  terminologies of   o/s
+             Multitasking :
+                   ability of  operating system to executed more then one task simultaneously is known as multitasking.
+                   all modern  o/s  supports concept of multitasking.
+                   e.g   linux /  window / apple mac  etc.
+                    over these  o/s  we can run n number of  application  concurrently 
+                    e.g  we  can play winamp or  g chorme   or word  on cncurnt basis
+                     using  concept of  multitasking  we can exploit cpu time in more efficient manner.
+                     multitasking can be thinked as one of the feature of  o/s  .
+                      o/s  achv  multitasking    os  uses  concept of  time slicing....  
+                    Multitasking  is again of  2 types : 
+                          Process based multitasking       Thread based multitasking.
+
+in case of  Process based multitasking  o/s will manage execution of  each process in seperate - 2  address space
+        where as in case of  Thread based multitasking  o/s can   manage multiple task with in single  address space
+         process based multitasking best suitable when 2 process do not need  resource sharing
+         where as if  each process need data of  each other then such kind of  communication of data  
+         results in  speed degradation.   to resolve above prob o/s  purpose  Thread based multitasking.
+          e.g  of    Process based multitasking is concurrent  execution of   winamp +  intrnt explr +  mspaint
+          e.g of    Thread based  multitasking   is  execution of   multiple threads running with in 
+                        Word application    i.e    spell chkr  +  printing  +  typing.
+
+####################################################################################################################################################################################      
+
+	from java  implementation point of  view   thread  is   an   Object
+         and  for    the  proper management of   Thread  object  java  provides  us a  built in class  named "Thread'
+         fully  qualified name of this  class is    ---     java.lang.Thread 
+         in a  java  application  every    thread  is an object of   Thread  class  directly  or  indirectly 
+         
+	 common    methods  of   Thread class
+                       public void   start() ;      used to  start working of  Thread  
+                       public  void   stop() ;      used to  stop  execution of currentlly running  thread
+                       public  void  setName( String name );      used to   assign a logical name to thread
+                       public  String   getName()  ;      used  to  obtain name of  thread
+                       public   void  setPriority( int  pr);     used to  change  priority of  thread object
+                       public   static  void   sleep (  long  miilis  )  throws InterruptedException
+                       public  static  Thread   currentThread(   ) ;  used to  obtain ref. of  thread  Thread object...
+                                                                                                 (  from  its  own  working  )
+                       public  void  join   ()   throws    InterruptedException  
+                                  used to    wait for  another thread    untill   another thread finish  its  working
+                       public     void   join (   long   millis  );
+                                 used to    wait for  another thread  for specified interval of time
+                         public  void  run ()     ;     represent    working of  thread
+
+                      public String getPriority();
+
+                         common   constructor   of  java.lang.Thread  class
+                                                               public  Thread()
+                                                               public   Thread  (String  thname) ;
+                                                               public   Thread   (  Runnable   target  )
+
+#######################################################################################################################################################################################
+
+steps of  creating   first  thread  based  application
+  step1    create   a   simple   java class and  extends it  from  java.lang.Thread class
+          now    override        run()  method of   Thread  class  in ur  child class    ( here run()  represents working of Thread )
+                 prototype of  run method is as under 
+                                                     public void  run( )   {      }
+                  write  some  instruction with in  run()  method    
+
+    step2          after  that   create one  more  class in same  fashion and  override     run()  method 
+
+     step 3          after   that  create  another  class with   main ()  method
+                          then  create object of   each   class   ( i.e  first and  second  class )
+                          and  then   call     start()  method on   each  object.
+                          and  then observe  concurrent   execution of    threads.
+
+        Note :   here   run () method  represents  working  of  thread
+                       for   every  thread  object   u  are  required to  define  its  working 
+                       and  we can  do  the same  only  using  run()  method
+                       note :  there are  lots of  ways of   overriding    public void  run() method
+                       above  said  is  the  most   typical  way of  defining  working of thread
+    we   will  learn   other  method  after  understanding   lyfcycle of   thread            
+
+#########################################################################################################################################################################################   
+
+     some other  defi. of  Thread
+             Thread  :   execution  path  of a  program  is known as  Thread
+
+             till now  in  our  all application  we observe  single  path of  execution    and because of this
+             our  program  does only  one  single thing at  a time.
+
+             but some  time  we wants to  perform   more thn one  activities   simultaneously   to do 
+             the same  we need  support of  multithreading  
+
+
+
+
+
+
+     Program
+
+       Process
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

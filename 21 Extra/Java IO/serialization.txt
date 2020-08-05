@@ -1,0 +1,38 @@
+
+     persisting  object data  to secondary storage device  .... 
+           concept of  object  serialization :
+
+Serialization  :  process of storing / writing  state of an object to and from  byte oriented stream
+ is known as  serialization
+
+  this is useful  when you want to save the state of your object to persistant storage.area such as
+ file. and at later time we can restore these objects by using the process of deserialization
+  
+ using concept of  serialization we can  also  send object data on  a network.
+
+to  perform    object serialization   java  provides us   2  built in  high level  stream classes
+     1  ObjectOutputStream  and           2 ObjectInputStream
+
+
+ Serializable :  The object that implements the Serializable interface can be saved or 
+                        restored by the serialization facility. The Serializable interface do not contains 
+                        any no. of member. (such kind of interface are known as marker interface)
+
+                        It is simply used to indicate that a class is serialized.
+
+                         If a class is serializable then all of it's subclasses are also seriablizable.
+
+  Note :   static datamembers of an java class object never persisted as they are not the
+               part  of object data  where they represent class data.
+
+
+//   from   java  io  point of  view    following   high level  stream  classes are  used   for  object persistance.
+
+      ObjectOutputStream : can be used to save object data.
+      ObjectInputStream   : can be used to read object data back.. 
+
+    // lets  understand  above   with  following  e.g 
+    //   at first  create   some  simple java class and     implemenents   Serializable  interface with in it...
+
+
+         

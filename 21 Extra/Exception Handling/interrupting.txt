@@ -1,0 +1,38 @@
+
+
+//  requesting  ...   termination of  Thread using .....
+       interrupt() ,  interrrupted() and   isInterrupted() methods
+                         as we know a thread terminates when its run method finish
+                         but  in addition to  that we can stop a thread  using   stop method 
+                         how ever this method is now depricated . as  stop()  results in some complexity
+
+                        so  to terminate a thread java propose some  other methods     i.e   interrupt()   
+
+              before  using  interrupt() method  we  hv to  under stand  concept of  Thread  Interrupted Status
+         
+  Every thread object implicitly consist of interrupted status  in form  of  boolean flag variable  and  its  default value is  false.
+
+  using  interrupt()  method we can change value of  interrupted  status.
+
+  interrupt()   :   This method  is used to request termination of  thread.
+                         but it do not terminated thread forcefully
+                              public void interrupt()
+                              when we call interrupt() method on a thread object then interrupted status  of  same  
+                              thread object is set to true.
+
+   we can  check interrupted status of a thread object using  following 2 methods of   Thread class
+     1.   interrupted()
+                         public  static boolean interrupted();
+                         test wheather the current thread  has been interrupted or not.
+                         Call of interrupted() has  one  side effect i.e. 
+                         it  reset the   interrupted   status of the current thread to false if  it is true
+  
+      2.  isInterrupted()
+                         public  boolean isInterrupted()
+                         test wheather the current thread  has been interrupted. 
+                         unlike  interrupted() method this method does not change the interrupted  status of   the thread.
+               
+  NOTE :  if we call interrupted() or isInterrupted() method on a thread which is blocked by sleep  then it
+                always results in  InterruptedException and upon same exception thread object will leave the blocked state 
+                 and  reset the  thread  interrupted status to  false.
+           
